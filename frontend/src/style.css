@@ -1,0 +1,128 @@
+/* Global Styles */
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 10px; /* Added slight padding around the body */
+  min-height: 100vh;
+  background-color: #242424; /* Default dark background */
+  color: #eaeaea; /* Default text color for dark mode */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* Links */
+a {
+  font-weight: 500;
+  color: #646cff; /* Default link color */
+  text-decoration: inherit; /* Inherit text decoration from parent */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+a:hover {
+  color: #535bf2; /* Hover color for links */
+}
+
+/* Headings */
+h1 {
+  font-size: 3.2em; /* Title size */
+  line-height: 1.1; /* Line height for titles */
+  margin-bottom: 20px; /* Margin after heading */
+}
+
+/* Card Styles */
+.card {
+  margin-bottom: 20px; /* Optional: Add bottom margin to cards for spacing */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* App-wide Styles */
+#app {
+  text-align: center;
+  padding: 15px; /* Padding for the app container */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the app */
+}
+
+/* Footer Styles */
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 40px;
+  border-top: 2px solid #444;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #242424;
+  color: #eaeaea;
+}
+
+.card.dark-mode {
+  background-color: #333333;
+  color: #d1d1d1;
+}
+
+.footer.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+a.dark-mode {
+  color: #646cff;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.card.light-mode {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.footer.light-mode {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+a.light-mode {
+  color: #0066cc;
+}
+
+/* Transition Effects for UI Components */
+.card, .footer, a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme Media Query */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  .footer {
+    background-color: #ffffff;
+    color: #213547;
+  }
+}

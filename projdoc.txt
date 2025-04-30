@@ -1,0 +1,78 @@
+1 User Management
+Additional Features:
+
+orinbrai@gmail.com password12
+
+OAuth Social Login (e.g., Google, Facebook) for easier onboarding.
+
+Two-Factor Authentication (2FA) for added security.
+
+Password recovery/reset flow via email.
+
+2 Groups & Friends
+Enhancements:
+
+Group roles (owner, member, viewer) to allow better control over who can add/edit expenses.
+
+Group chat or comment threads per expense (optional but boosts engagement and coordination).
+
+Group splitting rules presets (e.g., recurring utility bills, one person always pays and others reimburse).
+
+3 Expense Tracking
+Advanced Options:
+
+Recurring expenses (e.g., rent every month).
+
+Attachments (e.g., upload receipts for each expense).
+
+Currency support and conversion for international groups.
+
+4 Payment Integration
+Suggestions:
+
+Partial payment tracking: track if someone paid partially and still owes a balance.
+
+Payment confirmation status (e.g., "pending", "confirmed" via webhook callbacks from Stripe/PayPal/M-Pesa).
+
+In-app wallet or credit system (optional) to pre-load balance.
+
+5 Notifications & Reminders
+Additions:
+
+Push notifications via Firebase (especially for mobile-first experience).
+
+Custom reminder intervals (user-defined frequency for reminders).
+
+6 Dashboard & Insights
+Extra Features:
+
+ Debt Simplification Algorithm (e.g., minimize number of transactions to settle debts).
+
+ Leaderboard-style visualization for who spends the most, who pays first, etc.
+
+ Downloadable reports (PDF/CSV) for financial records.
+
+7 Security & Roles
+Suggestions:
+
+ Activity logs: Track who did what for transparency and auditing.
+
+ Rate limiting for endpoints (Laravel throttle middleware) to prevent abuse.
+
+ Role-based access control for future scalability (e.g., multi-tenant app support).
+
+8🧠 AI & Smart Features
+Innovations:
+
+Anomaly detection for suspicious spending behavior.
+
+Smart reminders (e.g., if someone frequently delays, send stronger nudges).
+
+Spending optimization tips (based on past data — suggest cheaper alternatives).
+
+9 📱 UI/UX Enhancements
+Dark mode toggle.
+
+Multi-language support (at least Swahili + English to start).
+
+Progressive Web App (PWA) capabilities for offline access.
