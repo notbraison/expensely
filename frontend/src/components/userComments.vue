@@ -32,14 +32,12 @@
 <script>
 import axios from 'axios';
 import BackButton from './Backbutton.vue';
-import PageBar from '../components/pageBar.vue';
 
 
 export default {
     name:'comments',
   components: {
     BackButton,
-    PageBar
   },
   data() {
     return {

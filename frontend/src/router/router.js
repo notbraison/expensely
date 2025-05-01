@@ -4,26 +4,17 @@ import UserRegistration from '../pages/UserRegistration.vue';
 import Logout from '../pages/Logout.vue';
 import UserLogin from '../pages/UserLogin.vue';
 import UserList from '../pages/UserList.vue';
-import Building from '../pages/Building.vue';
-import AddBuilding from '../pages/AddBuilding.vue';
-import AddFloor from '../pages/AddFloor.vue';
 import EditUser from '../pages/EditUser.vue';
 import About from '../components/About.vue';
 import ForgotPassword from '../pages/ForgotPassword.vue';
 import UserProfile from '../pages/UserProfile.vue';
-import EditBuilding from '../pages/EditBuilding.vue';
-import Floors from '../pages/Floors.vue';
+
 import adminList from '../pages/adminList.vue';
-import RoomList from '../pages/RoomList.vue';
-import AddRoom from '../components/AddRoom.vue';
-import EditRoom from '../components/EditRoom.vue';
-import BrowseRooms from '../components/BrowseRooms.vue';
-import RoomDetails from '../components/RoomDetails.vue';
+
 import moreInfo from '../components/moreInfo.vue';
-import RoomsCatalog from '../components/RoomsCatalog.vue';
+
 import BookingConfirmation from '../pages/BookingConfirmation.vue';
 import Payment from '../pages/Payment.vue';
-import RentedRooms from '../pages/RentedRooms.vue';
 import UserHistory from '../components/UserHistory.vue';
 import AddComment from '../pages/AddComment.vue';
 import PaymentsList from '../components/PaymentsList.vue';
@@ -46,6 +37,10 @@ import Reports from '../components/Reports.vue';
 import UserComments from '../components/userComments.vue';
 import AdminAddComment from '../pages/AdminAddComment.vue';
 
+//expensely
+import GroupsAndFriends from '../pages/GroupsAndFriends.vue';
+
+
 const routes = [
   {
     path: '/',
@@ -63,6 +58,11 @@ const routes = [
     name: "Logout"
   },
   {
+    path:'/groups',
+    component: GroupsAndFriends,
+    name: 'GroupsAndFriends'
+  },
+  {
     path: '/users',
     component: UserList,
     name: "Userlist"
@@ -76,52 +76,6 @@ const routes = [
     path: '/login',
     component: UserLogin,
     name: "UserLogin"
-  },
-  {
-    path: "/buildings",
-    component: Building,
-    name: "Building"
-  },
-  {
-    path: "/addbuilding",
-    component: AddBuilding,
-    name: "AddBuilding"
-  },
-  {
-    path: '/editbuilding/:id',
-    component: EditBuilding,
-    name: "EditBuilding",
-  },
-  {
-    path: "/floors/:building_id",
-    component: Floors,
-    name: "Floor"
-  },
-  {
-    path: "/addfloor/:building_id",
-    component: AddFloor,
-    name: "AddFloor"
-  },
-  {
-    path: '/floors/:floor_id/rooms',
-    component: RoomList,
-    name: 'RoomList',
-    props: true, // Allow route params to be passed as props
-  },
-  {
-    path: "/addRoom/:floor_id",
-    component: AddRoom,
-    name: AddRoom
-  },
-  {
-    path: '/editroom/:id',
-    component: EditRoom,
-    name: "EditRoom",
-  },
-  {
-    path: '/manage-rooms',
-    component: RoomsCatalog,
-    name: "RoomManagement",
   },
   {
     path: '/about',
@@ -148,36 +102,7 @@ const routes = [
     name: 'adminList',
     component: adminList
   },
-  {
-    path: '/browserooms',
-    name: 'BrowseRooms',
-    component: BrowseRooms
-  },
-  {
-    path: '/roominfo/:id', //more info about rooms for users / clients
-    name: "roominfo",
-    component: RoomDetails
-  },
-  {
-    path: '/moreInfo/:id', //more info about rooms for admins to view
-    name: "moreInfo",
-    component: moreInfo
-  },
-  {
-    path: '/bookRoom/:room_id',
-    name: 'bookingConfirmation',
-    component: BookingConfirmation
-  },
-  {
-    path: '/payment/:booking_id/:room_id',
-    name: 'Payment',
-    component: Payment
-  },
-  {
-    path: '/rented-rooms',
-    name: 'RentedRooms',
-    component: RentedRooms
-  },
+  
   {
     path: '/history',
     name: 'UserHistory',

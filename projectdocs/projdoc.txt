@@ -18,6 +18,8 @@ Group chat or comment threads per expense (optional but boosts engagement and co
 
 Group splitting rules presets (e.g., recurring utility bills, one person always pays and others reimburse).
 
+
+
 3 Expense Tracking
 Advanced Options:
 
@@ -76,3 +78,8 @@ Dark mode toggle.
 Multi-language support (at least Swahili + English to start).
 
 Progressive Web App (PWA) capabilities for offline access.
+
+
+Similar
+
+https://chumz.io/

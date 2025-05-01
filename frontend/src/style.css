@@ -1,4 +1,27 @@
 /* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  flex-grow: 1; /* This makes the main content area expand to fill the available space */
+  width: 100%;
+}
+
+/* App-wide Styles */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Ensures the app stretches to fill the full height */
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -8,15 +31,43 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #242424; /* Dark background */
+  color: #eaeaea; /* Text color for dark mode */
+}
 
 body {
-  margin: 0;
-  padding: 10px; /* Added slight padding around the body */
   min-height: 100vh;
   background-color: #242424; /* Default dark background */
   color: #eaeaea; /* Default text color for dark mode */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
+
+/* Footer Styles */
+.footer {
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+  justify-content: center; /* Center footer contents horizontally */
+  align-items: center; /* Center footer content vertically */
+  font-size: 1em;
+  margin-top: 40px;
+  border-top: 2px solid #444;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #24262b;
+  color: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  
+}
+
+
+
 
 /* Links */
 a {
@@ -51,23 +102,6 @@ h1 {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
-/* App-wide Styles */
-#app {
-  text-align: center;
-  padding: 15px; /* Padding for the app container */
-  max-width: 1200px;
-  margin: 0 auto; /* Center the app */
-}
-
-/* Footer Styles */
-.footer {
-  padding: 20px;
-  text-align: center;
-  font-size: 1em;
-  margin-top: 40px;
-  border-top: 2px solid #444;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
 
 /* Dark Mode Styles */
 body.dark-mode {

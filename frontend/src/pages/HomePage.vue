@@ -1,8 +1,4 @@
 <template>
-  <div v-if="userRole==='user'">
-    <PageBar />
-  </div>
-  
   <div class="home-container">
     <!-- Admin Dashboard Section -->
     <div v-if="userRole === 'admin'" class="admin-dashboard">
@@ -25,8 +21,8 @@
     <div v-else-if="userRole === 'user'" class="user-options">
       <br> <br> <h2>Welcome</h2> <br>
 
-      <!-- Swiper for Featured Rooms -->
-      <Swiper />
+      <!--  Funtionalities -->
+      <featurePack/>
       <br />
 
       <!-- Featured Cards -->
@@ -38,20 +34,7 @@
           <router-link :to="feature.link" class="btn">Learn More</router-link>
         </div>
       </div>
-      
-
-
-      <!-- Booking History Section -->
-      <h3>Your Booking History</h3>
-      <div class="booking-history">
-        <p>No booking history available.</p> <!-- Placeholder for booking history -->
-      </div>
-
-      <!-- Notifications Section -->
-      <h3>Notifications</h3>
-      <div class="notifications">
-        <p>No new notifications.</p>
-      </div>
+      <br />
     </div>
 
     <!-- Guest Section -->
@@ -64,20 +47,17 @@
 </template>
 
 <script>
-import Swiper from '../components/swiper.vue';
+import featurePack from '../components/featurePack.vue';
 
 // Importing images directly
-import featureRoomBooking from '../assets/images/feature_room_booking.jpeg';
 import featureCustomerSupport from '../assets/images/feature_customer_support.jpeg';
 import featureFeedback from '../assets/images/feature_feedback.jpeg';
-import featureImageGallery from '../assets/images/feature_image_gallery.jpg';
-import PageBar from '../components/pageBar.vue';
+import FeaturePack from '../components/featurePack.vue';
 
 export default {
   name: 'Home',
   components: {
-    Swiper,
-    PageBar
+    featurePack
   },
   data() {
     return {
@@ -95,12 +75,7 @@ export default {
   
       ],
       features: [
-        {
-          title: 'Room Booking',
-          description: 'Easily book rooms at your convenience.',
-          link: '/browserooms',
-          image: featureRoomBooking,
-        },
+        
         {
           title: 'Customer Support',
           description: 'Get help and support whenever you need it.',
@@ -113,12 +88,6 @@ export default {
           link: '/under-construction',
           image: featureFeedback,
         },
-        {
-          title: 'ImageGallery',
-          description: 'View a gallery of images of the rooms on offer.',
-          link: '/under-construction',
-          image: featureImageGallery,
-        }
       ]
     };
   },

@@ -31,6 +31,9 @@
           <li class="nav-item" v-if="isLoggedIn && userRole === 'user'">
             <router-link to="/rented-rooms" class="nav-link active">My Payments</router-link>
           </li>
+          <li class="nav-item" v-if="isLoggedIn && userRole === 'user'">
+            <router-link to="/rented-rooms" class="nav-link active">Calculators</router-link>
+          </li>
           
         </ul>
         <ul class="navbar-nav">

@@ -66,24 +66,31 @@ body {
 }
 
 .container {
-  max-width: 1170px;
-  margin: auto;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .footer {
   background-color: #24262b;
-  padding: 70px 0;
+  padding: 50px 0;
   color: #ffffff;
+  width: 100%; /* Ensure the footer takes full width */
+  position: relative;
 }
 
 .footer-col {
-  width: 25%;
+  width: 23%;
   padding: 0 15px;
+  margin-bottom: 20px; /* Bottom margin to separate the columns */
 }
 
 .footer-col h4 {
