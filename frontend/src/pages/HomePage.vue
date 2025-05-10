@@ -22,7 +22,7 @@
       <br> <br> <h2>Welcome</h2> <br>
 
       <!--  Funtionalities -->
-      <featurePack/>
+      <!-- <featurePack/> -->
       <br />
 
       <!-- Featured Cards -->
@@ -47,17 +47,16 @@
 </template>
 
 <script>
-import featurePack from '../components/featurePack.vue';
+//import featurePack from '../components/featurePack.vue';
 
 // Importing images directly
 import featureCustomerSupport from '../assets/images/feature_customer_support.jpeg';
 import featureFeedback from '../assets/images/feature_feedback.jpeg';
-import FeaturePack from '../components/featurePack.vue';
 
 export default {
   name: 'Home',
   components: {
-    featurePack
+    //featurePack
   },
   data() {
     return {
