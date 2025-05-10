@@ -5,8 +5,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\GroupMembersController;
 use App\Models\GroupMember;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AIController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CalculatorController;
+
+
+
 
 Route::middleware('web')->group(function () {
     Route::group(['prefix' => 'auth'], function () {
@@ -21,6 +31,11 @@ Route::middleware('web')->group(function () {
 });
 
 // For web routes
+
+//google oauth service
+Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+
 
 //Friends
 
@@ -75,3 +90,54 @@ Route::prefix('groups/{group}')->group(function () {
 
 });
 
+//payment methods
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/payment-methods', [PaymentMethodController::class, 'addPaymentMethod']);
+    Route::get('/payment-methods', [PaymentMethodController::class, 'getPaymentMethods']);
+    Route::delete('/payment-methods/{id}', [PaymentMethodController::class, 'removePaymentMethod']);
+});
+
+//payments
+
+Route::middleware('auth:sanctum')->get('/payments', [PaymentController::class, 'index']);
+Route::middleware('auth:sanctum')->get('/payments/{paymentId}', [PaymentController::class, 'show']);
+
+
+
+//Notifications;
+
+// Fetch all notifications for the logged-in user
+Route::get('/notifications', [NotificationController::class, 'index'])->middleware('auth:sanctum');
+
+// Mark a specific notification as read
+Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->middleware('auth:sanctum');
+
+// Mark all notifications as read
+Route::patch('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->middleware('auth:sanctum');
+
+// Delete a notification
+Route::delete('/notifications/{id}', [NotificationController::class, 'delete'])->middleware('auth:sanctum');
+
+
+
+// Route for getting AI insights
+Route::post('/ai-insights', [AIController::class, 'getInsights'])->middleware('auth:sanctum');
+
+
+//transactions
+Route::middleware('auth:sanctum')->get('/transactions', [TransactionController::class, 'index']);
+
+//Calculator
+
+
+// Route for calculating expense split
+Route::middleware('auth:sanctum')->post('/expense-split', [CalculatorController::class, 'calculateExpenseSplit']);
+
+// Route for tracking budget
+Route::middleware('auth:sanctum')->post('/track-budget', [CalculatorController::class, 'trackBudget']);
+
+// Route for calculating savings goal
+Route::middleware('auth:sanctum')->post('/calculate-savings', [CalculatorController::class, 'calculateSavingsGoal']);
+
+// Route for storing a new savings goal
+Route::middleware('auth:sanctum')->post('/store-savings-goal', [CalculatorController::class, 'storeSavingsGoal']);

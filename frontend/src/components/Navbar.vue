@@ -20,7 +20,7 @@
             <router-link to="/" class="nav-link active">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/browserooms" class="nav-link active">View transactions</router-link>
+            <router-link to="/transactions" class="nav-link active">View transactions</router-link>
           </li>
           <li class="nav-item" v-if="!isLoggedIn">
             <router-link to="/register" class="nav-link active">Register</router-link>
@@ -29,10 +29,10 @@
             <router-link to="/login" class="nav-link active">Login</router-link>
           </li>
           <li class="nav-item" v-if="isLoggedIn && userRole === 'user'">
-            <router-link to="/rented-rooms" class="nav-link active">My Payments</router-link>
+            <router-link to="/payments" class="nav-link active">My Payments</router-link>
           </li>
           <li class="nav-item" v-if="isLoggedIn && userRole === 'user'">
-            <router-link to="/rented-rooms" class="nav-link active">Calculators</router-link>
+            <router-link to="/calculator" class="nav-link active">Calculators</router-link>
           </li>
           
         </ul>

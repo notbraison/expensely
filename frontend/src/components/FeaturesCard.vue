@@ -25,7 +25,7 @@
             <h5 class="card-title">Expense Tracking</h5>
             <p class="card-text">Track recurring expenses, attachments (receipts), and manage currency conversions.</p>
             <!-- Use router-link for navigation -->
-            <router-link to="/expense-tracking" class="btn btn-primary">Explore</router-link>
+            <router-link to="/dashboard" class="btn btn-primary">Explore</router-link>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
             <h5 class="card-title">AI & Smart Features</h5>
             <p class="card-text">Detect spending anomalies, provide optimization tips, and send smart reminders.</p>
             <!-- Use router-link for navigation -->
-            <router-link to="/ai-smart-features" class="btn btn-primary">Explore</router-link>
+            <router-link to="/ai-insights" class="btn btn-primary">Explore</router-link>
           </div>
         </div>
       </div>

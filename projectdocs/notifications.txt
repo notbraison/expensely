@@ -1,0 +1,9 @@
+Upcoming Bills – Notifications for recurring expenses or due dates.
+
+Overdue Payments – Notifications for overdue payments or balances that need to be settled.
+
+Friendship Requests – Notifications for friend requests and status changes (accepted/rejected).
+
+System Alerts – Other system notifications (e.g., successful payment, new feature updates).
+
+Custom Reminders – User-defined reminders for various actions.

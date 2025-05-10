@@ -54,7 +54,7 @@
   
       <!-- No Friends Found -->
       <div v-if="filteredFriends.length === 0" class="text-center text-muted">
-        No friends found.
+        <router-link to="/add-friends" class="text-blue-500 hover:underline ml-2">Add some Friends to you expensely</router-link>
       </div>
     </div>
   </template>

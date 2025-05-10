@@ -36,6 +36,37 @@ class FriendshipController extends Controller
         return response()->json(['message' => 'Friend request sent successfully']);
     }
 
+    // Send a friend request by email
+    public function sendFriendRequestByEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',  // Ensure email exists in the users table
+        ]);
+
+        $friend = User::where('email', $request->email)->first();
+        $userId = Auth::id();  // Get the logged-in user's ID
+
+        // Check if a friendship already exists
+        $existingRequest = Friendship::where(function ($query) use ($userId, $friend) {
+            $query->where('user_id', $userId)->where('friend_id', $friend->user_id);
+        })->orWhere(function ($query) use ($userId, $friend) {
+            $query->where('user_id', $friend->user_id)->where('friend_id', $userId);
+        })->first();
+
+        if ($existingRequest) {
+            return response()->json(['message' => 'Friend request already sent or exists'], 400);
+        }
+
+        // Create the friendship request
+        Friendship::create([
+            'user_id' => $userId,
+            'friend_id' => $friend->user_id,
+            'status' => 'pending',
+        ]);
+
+        return response()->json(['message' => 'Friend request sent successfully']);
+    }
+
     // Accept or decline a friend request
     public function respondToRequest($friendshipId, Request $request)
     {
@@ -75,4 +106,7 @@ class FriendshipController extends Controller
 
         return response()->json(['message' => 'Friend removed successfully']);
     }
+
 }
+
+

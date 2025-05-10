@@ -11,9 +11,6 @@ import UserProfile from '../pages/UserProfile.vue';
 
 import adminList from '../pages/adminList.vue';
 
-import moreInfo from '../components/moreInfo.vue';
-
-import Payment from '../pages/Payment.vue';
 import UserHistory from '../components/UserHistory.vue';
 import AddComment from '../pages/AddComment.vue';
 import PaymentsList from '../components/PaymentsList.vue';
@@ -22,7 +19,6 @@ import CommentsCatalog from '../components/CommentsCatalog.vue';
 import Testimonials from '../pages/Testimonials.vue';
 import EditComment from '../pages/EditComment.vue';
 import FAQ from '../components/FAQ.vue';
-import PaymentOptions from '../components/PaymentOptions.vue';
 import PrivacyPolicy from '../components/PrivacyPolicy.vue';
 import ContactUs from '../components/ContactUs.vue';
 import Services from '../components/Services.vue';
@@ -36,7 +32,15 @@ import AdminAddComment from '../pages/AdminAddComment.vue';
 //expensely
 import Groups from '../pages/Groups.vue';
 import GroupForm from '../components/GroupForm.vue';
-
+import AddFriend from '../components/AddFriend.vue'
+import Friends from '../components/Friends.vue';
+import PaymentIntegration from '../pages/PaymentIntegration.vue';
+import Dashboard from '../pages/Dashboard.vue';
+import NotificationsPage from '../pages/NotificationsPage.vue';
+import AIinsights from '../pages/AIinsights.vue';
+import TransactionsPage from '../pages/TransactionsPage.vue';
+import PaymentsPage from '../pages/PaymentsPage.vue';
+import Calculator from '../components/Calculator.vue';
 
 
 const routes = [
@@ -56,6 +60,16 @@ const routes = [
     name: "Logout"
   },
   {
+    path: "/friend",
+    component: Friends,
+    name: "Friends"
+  },
+  {
+    path: "/add-friends",
+    component: AddFriend,
+    name: "AddFriend"
+  },
+  {
     path: '/groups',
     name: 'groups',
     component: Groups,
@@ -65,6 +79,43 @@ const routes = [
     name: 'manageMembers',
     component: () => import('../components/ManageMembers.vue'), // Lazy load the component
   },
+  {
+    path: '/payment-integration',
+    component: PaymentIntegration,
+    name: 'PaymentIntegration',
+  },
+  
+  {
+    path: '/dashboard',
+    component: Dashboard,
+    name: 'dashboard',
+  },
+  {
+    path: '/notifications',
+    component: NotificationsPage,
+    name: 'Notificatiosn',
+  },
+  {
+    path: '/ai-insights',
+    component: AIinsights,
+    name: 'AIinsights',
+  },
+  {
+    path: '/transactions',
+    component: TransactionsPage,
+    name: 'Transactions',
+  },
+  {
+    path: '/payments',
+    component: PaymentsPage,
+    name: 'payments',
+  },
+  {
+    path: '/calculator',
+    component: Calculator,
+    name: 'calculator',
+  },
+
   {
     path: '/users',
     component: UserList,
@@ -150,11 +201,6 @@ const routes = [
     path: '/FAQ',
     name: 'FAQ',
     component: FAQ
-  },
-  {
-    path: '/payment-options',
-    name: 'PaymentOptions',
-    component: PaymentOptions
   },
   {
     path: '/privacy-policy',
