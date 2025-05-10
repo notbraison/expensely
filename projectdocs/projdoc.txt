@@ -2,6 +2,7 @@
 Additional Features:
 
 orinbrai@gmail.com password12
+junman@email.com password13
 
 OAuth Social Login (e.g., Google, Facebook) for easier onboarding.
 

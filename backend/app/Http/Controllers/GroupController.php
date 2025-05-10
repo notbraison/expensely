@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class GroupController extends Controller
@@ -24,6 +25,21 @@ class GroupController extends Controller
         ]);
     }
 
+     public function getGroupsByUser($userId)
+    {
+        // Fetch groups where the user is a member (assuming you have a relationship defined)
+        $userId = auth()->id(); // Get the logged-in user's ID
+        $groups = Group::whereHas('members', function ($query) use ($userId) {
+            $query->where('user_id', $userId);  // Check if the user is a member
+        })->get();
+
+        // Return the groups as a JSON response
+        return response()->json([
+            'message' => 'Fetched user groups successfully',
+            'data' => $groups
+        ]);
+    }
+
     /**
      * Store a newly created group in storage.
      *
@@ -32,6 +48,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+         // Ensure the user is authenticated
+         if (!Auth::check()) {
+            return response()->json(['message' => 'You must be logged in to create a group'], 403);
+        }
         // Validate incoming request
         $request->validate([
             'name' => 'required|string|max:255',

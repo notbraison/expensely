@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class User extends Authenticatable  
+
+class User extends Authenticatable
 {
     use HasApiTokens,HasFactory, Notifiable;
 
@@ -60,5 +62,16 @@ class User extends Authenticatable
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Define the many-to-many relationship with other users (friends).
+     * The pivot table 'friendships' will store this relationship.
+     */
+    public function friends(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'friendships', 'user_id', 'friend_id')
+                    ->withPivot('status') // status of the friendship (pending, accepted, etc.)
+                    ->withTimestamps();
     }
 }

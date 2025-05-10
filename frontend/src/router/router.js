@@ -13,7 +13,6 @@ import adminList from '../pages/adminList.vue';
 
 import moreInfo from '../components/moreInfo.vue';
 
-import BookingConfirmation from '../pages/BookingConfirmation.vue';
 import Payment from '../pages/Payment.vue';
 import UserHistory from '../components/UserHistory.vue';
 import AddComment from '../pages/AddComment.vue';
@@ -23,22 +22,21 @@ import CommentsCatalog from '../components/CommentsCatalog.vue';
 import Testimonials from '../pages/Testimonials.vue';
 import EditComment from '../pages/EditComment.vue';
 import FAQ from '../components/FAQ.vue';
-import BookingGuide from '../components/BookingGuide.vue';
 import PaymentOptions from '../components/PaymentOptions.vue';
 import PrivacyPolicy from '../components/PrivacyPolicy.vue';
 import ContactUs from '../components/ContactUs.vue';
-import CancellationPolicy from '../components/CancellationPolicy.vue';
 import Services from '../components/Services.vue';
 import CustomerSupport from '../components/CustomerSupport.vue';
 import UnderConstruction from '../components/UnderConstruction.vue';
-import BookingsCatalog from '../components/BookingsCatalog.vue';
 import visualizations from '../components/visualizations.vue';
 import Reports from '../components/Reports.vue';
 import UserComments from '../components/userComments.vue';
 import AdminAddComment from '../pages/AdminAddComment.vue';
 
 //expensely
-import GroupsAndFriends from '../pages/GroupsAndFriends.vue';
+import Groups from '../pages/Groups.vue';
+import GroupForm from '../components/GroupForm.vue';
+
 
 
 const routes = [
@@ -58,9 +56,14 @@ const routes = [
     name: "Logout"
   },
   {
-    path:'/groups',
-    component: GroupsAndFriends,
-    name: 'GroupsAndFriends'
+    path: '/groups',
+    name: 'groups',
+    component: Groups,
+  },
+  {
+    path: '/groups/:groupId/manage-members',
+    name: 'manageMembers',
+    component: () => import('../components/ManageMembers.vue'), // Lazy load the component
   },
   {
     path: '/users',
@@ -149,11 +152,6 @@ const routes = [
     component: FAQ
   },
   {
-    path: '/booking-guide',
-    name: 'BookingGuide',
-    component: BookingGuide
-  },
-  {
     path: '/payment-options',
     name: 'PaymentOptions',
     component: PaymentOptions
@@ -167,11 +165,6 @@ const routes = [
     path: '/contact-us',
     name: 'ContactUs',
     component: ContactUs
-  },
-  {
-    path: '/cancellation-policy',
-    name:'CancellationPolicy',
-    component: CancellationPolicy
   },
   { path: '/services', 
     name:'services',
@@ -189,11 +182,7 @@ const routes = [
     name:'UnderConstruction',
     component: UnderConstruction 
   },
-  {
-    path: '/bookings-catalog',
-    name:'BookingCatalog',
-    component: BookingsCatalog
-  },
+
   {
     path: '/admin/visualizations',
     name:'visualizations',

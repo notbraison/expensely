@@ -22,7 +22,33 @@ Route::middleware('web')->group(function () {
 
 // For web routes
 
+//Friends
+
+use App\Http\Controllers\FriendshipController;
+
+// Send a friend request
+Route::post('/friends/{friendId}/request', [FriendshipController::class, 'sendRequest'])->middleware('auth');
+
+// Accept or decline a friend request
+Route::post('/friends/{friendshipId}/respond', [FriendshipController::class, 'respondToRequest'])->middleware('auth');
+
+// View all friends of the logged-in user
+Route::get('/friends', [FriendshipController::class, 'viewFriends'])->middleware('auth');
+
+// Remove a friend
+Route::delete('/friends/{friendshipId}', [FriendshipController::class, 'removeFriend'])->middleware('auth');
+
+
 //groups
+// Protecting the store and index method     middleware
+// to ensure that only authenticated users can access them
+Route::middleware('auth')->group(function () {
+    Route::get('/groups', [GroupController::class, 'index']);
+    Route::post('/groups', [GroupController::class, 'store']);
+});
+// Fetch groups by user ID (where userId is passed as a parameter)
+Route::get('/api/groups/user/{userId}', [GroupController::class, 'getGroupsByUser']);
+
 Route::resource('groups', GroupController::class);
 
 //Group members

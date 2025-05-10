@@ -12,8 +12,7 @@ register();// register Swiper custom elements
 axios.defaults.withCredentials = false
 axios.defaults.withXSRFToken = false;
 axios.defaults.headers.common['Accept'] = 'application/json'
-axios.defaults.baseURL = 'http://localhost:8000' // Adjust if your API is on a different port
-
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 const app = createApp(App)
 app.use(router);

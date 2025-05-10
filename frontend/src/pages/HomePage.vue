@@ -22,7 +22,7 @@
       <br> <br> <h2>Welcome</h2> <br>
 
       <!--  Funtionalities -->
-      <!-- <featurePack/> -->
+       <FeaturesCard/>
       <br />
 
       <!-- Featured Cards -->
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-//import featurePack from '../components/featurePack.vue';
+import FeaturesCard from '../components/FeaturesCard.vue';
 
 // Importing images directly
 import featureCustomerSupport from '../assets/images/feature_customer_support.jpeg';
@@ -56,8 +56,8 @@ import featureFeedback from '../assets/images/feature_feedback.jpeg';
 export default {
   name: 'Home',
   components: {
-    //featurePack
-  },
+  FeaturesCard,
+ },
   data() {
     return {
       adminOptions: [
