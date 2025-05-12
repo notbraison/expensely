@@ -47,6 +47,8 @@ Route::post('/user', [UserController::class, 'createUser']);
 Route::get('/user/{id}', [UserController::class, 'readUser']);
 Route::put('/user/{id}', [UserController::class, 'updateUser']);
 Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
+// Route to update profile photo
+Route::post('/update-profile-photo', [UserController::class, 'updateProfilePhoto']);
 
 Route::prefix('admin')->group(function () {
     Route::get('/index', [AdminController::class, 'index']); // List all admins

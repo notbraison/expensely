@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -54,7 +57,7 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    //read a single user 
+    //read a single user
     public function readUser($user_id)
     {
         // Validate that the id is an integer
@@ -112,6 +115,31 @@ class UserController extends Controller
     } catch (\Exception $e) {
         return response()->json(['message' => 'An error occurred', 'error' => $e->getMessage()], 500);
     }
+}
+
+// Update the profile photo for the authenticated user
+public function updateProfilePhoto(Request $request)
+{
+    // Validate the uploaded file
+    $request->validate([
+        'profile_photo' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg|max:2048',
+    ]);
+
+    $user = Auth::user();
+
+    // If there is an old profile photo, delete it
+    if ($user->profile_photo && Storage::exists('public/' . $user->profile_photo)) {
+        Storage::delete('public/' . $user->profile_photo);
+    }
+
+    // Store the new profile photo
+    $path = $request->file('profile_photo')->store('profile_photos', 'public');
+
+    // Update the user's profile photo
+    $user->profile_photo = $path;
+    $user->save();
+
+    return response()->json(['message' => 'Profile photo updated successfully!', 'path' => $path]);
 }
 
 

@@ -1,40 +1,42 @@
 <template>
-  <div class="container profile-page mt-5">
-    <h1>{{ isClient ? 'User Profile' : 'Admin Profile' }}</h1>
-    <br />
+  <div class="container profile-page py-5">
+    <h2 class="text-center mb-4">{{ isClient ? 'User Profile' : 'Admin Profile' }}</h2>
 
-    <!-- Profile Picture -->
-    <div class="col-md-3 text-center">
-      <img 
-        :src="profilePhotoUrl" 
-        alt="Profile Photo" 
-        class="img-fluid rounded-circle"
-        width="150"
-        height="150"
-      />
-      <br />
-      <button @click="chooseFile" class="btn btn-outline-primary mt-3">Change Profile Photo</button>
-    </div>
+    <!-- Profile Section -->
+    <div class="row justify-content-center">
+      <!-- Profile Picture Section -->
+      <div class="col-md-3 text-center">
+        <img 
+          :src="profilePhotoUrl"
+          alt="Profile Photo"
+          class="img-fluid rounded-circle"
+          width="150"
+          height="150"
+        />
+        <br />
+        <button @click="chooseFile" class="btn btn-outline-primary mt-3">Change Profile Photo</button>
+      </div>
 
-    <section class="profile-content text-center">
-      <div class="card mx-auto" style="width: 35rem;" v-if="user">
-        <div class="card-body">
-          <h2 class="card-title">{{ user.firstname }} {{ user.lastname }}</h2>
-          <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
-          <p class="card-text" v-if="!isClient"><strong>Contact:</strong> {{ user.contact }}</p>
-          <p class="card-text" v-if="isClient"><strong>Gender:</strong> {{ user.gender }}</p>
-          <p class="card-text" v-if="isClient"><strong>National ID:</strong> {{ user.national_id }}</p>
-          <p class="card-text"><strong>Joined:</strong> {{ formattedDate(user.created_at) }}</p>
-          <p class="card-text" v-if="isClient"><strong>Age:</strong> {{ user.age }}</p>
+      
+      <!-- Profile Details -->
+      <div class="col-md-8 mt-4 mt-md-0">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title">{{ user.firstname }} {{ user.lastname }}</h4>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p v-if="!isClient"><strong>Contact:</strong> {{ user.contact }}</p>
+            <p v-if="isClient"><strong>Gender:</strong> {{ user.gender }}</p>
+            <p v-if="isClient"><strong>National ID:</strong> {{ user.national_id }}</p>
+            <p><strong>Joined:</strong> {{ formattedDate(user.created_at) }}</p>
+            <p v-if="isClient"><strong>Age:</strong> {{ user.age }}</p>
+            <button @click="editProfile" class="btn btn-warning mt-3">Edit Profile</button>
+          </div>
         </div>
       </div>
-      <div v-else>
-        <p>Loading user data...</p>
-      </div>
-    </section>
+    </div>
 
-     <!-- Edit Profile Form (Visible when editProfile is true) -->
-     <div v-if="editProfileMode" class="card shadow-sm mb-4">
+    <!-- Edit Profile Form (Visible when editProfileMode is true) -->
+    <div v-if="editProfileMode" class="card shadow-sm mt-4">
       <div class="card-body p-4">
         <h4>Edit Profile</h4>
         <form @submit.prevent="updateProfile">
@@ -64,34 +66,38 @@
       </div>
     </div>
 
-    <br />
+    <!-- Toggle Edit Form Button -->
     <div class="text-center mt-4">
       <button class="btn btn-primary" @click="toggleForm">{{ showForm ? 'Cancel' : 'Update Info' }}</button>
     </div>
-    <br />
 
-    <div class="update-form mt-4" v-if="showForm">
+    <!-- Profile Update Form -->
+    <div v-if="showForm" class="update-form mt-4">
       <form @submit.prevent="updateUser">
         <div class="card mx-auto" style="width: 35rem;">
           <div class="card-body">
             <h5 class="card-title">Update {{ user.firstname }} {{ user.lastname }}</h5>
-            <br />
+
             <div class="form-group">
               <label for="firstname">First Name:</label>
-              <input v-model="updatedUser.firstname" type="text" id="firstname" class="form-control" required>
+              <input v-model="updatedUser.firstname" type="text" id="firstname" class="form-control" required />
             </div>
+
             <div class="form-group mt-3">
               <label for="lastname">Last Name:</label>
-              <input v-model="updatedUser.lastname" type="text" id="lastname" class="form-control" required>
+              <input v-model="updatedUser.lastname" type="text" id="lastname" class="form-control" required />
             </div>
+
             <div class="form-group mt-3">
               <label for="email">Email:</label>
-              <input v-model="updatedUser.email" type="email" id="email" class="form-control" required>
+              <input v-model="updatedUser.email" type="email" id="email" class="form-control" required />
             </div>
+
             <div class="form-group mt-3">
               <label for="contact">Contact:</label>
-              <input v-model="updatedUser.contact" type="text" id="contact" class="form-control" required>
+              <input v-model="updatedUser.contact" type="text" id="contact" class="form-control" required />
             </div>
+
             <div class="form-group mt-3" v-if="isClient">
               <label for="gender">Gender:</label>
               <select v-model="updatedUser.gender" id="gender" class="form-control" required>
@@ -100,14 +106,17 @@
                 <option value="female">Female</option>
               </select>
             </div>
+
             <div class="form-group mt-3" v-if="isClient">
               <label for="age">Age:</label>
-              <input v-model="updatedUser.age" type="number" id="age" class="form-control" required>
+              <input v-model="updatedUser.age" type="number" id="age" class="form-control" required />
             </div>
+
             <div class="form-group mt-3" v-if="isClient">
               <label for="national_id">National ID:</label>
-              <input v-model="updatedUser.national_id" type="text" id="national_id" class="form-control" required>
+              <input v-model="updatedUser.national_id" type="text" id="national_id" class="form-control" required />
             </div>
+
             <button type="submit" class="btn btn-success mt-4">Save Changes</button>
           </div>
         </div>
@@ -124,9 +133,9 @@ import Backbutton from '../components/Backbutton.vue';
 
 export default {
   name: "Profile",
-  components:{
-        Backbutton
-    },
+  components: {
+    Backbutton
+  },
   data() {
     return {
       user: null, // User data loaded from local storage or API
@@ -188,17 +197,17 @@ export default {
       }
     },
     // Handle the file input change
-    async chooseFile(event) {
+    chooseFile(event) {
       this.selectedFile = event.target.files[0];
-      await this.uploadProfilePhoto(); // Immediately upload the new photo
+      this.uploadProfilePhoto(); // Immediately upload the new photo
     },
 
     // Update the profile photo on the server
-   async uploadProfilePhoto() {
+    uploadProfilePhoto() {
       const formData = new FormData();
       formData.append('profile_photo', this.selectedFile);
 
-      axios.post(`http://127.0.0.1:8000/api/user/update-profile-photo`, formData)
+      axios.post('/api/update-profile-photo', formData)
         .then(response => {
           this.fetchUserProfile(); // Refresh the user profile after the photo upload
           alert('Profile photo updated successfully!');
@@ -235,18 +244,6 @@ export default {
       // Disable the save button for clients if needed
       return this.user && this.user.usertype === 'client';
     },
-   /*  userName() {
-      return `${this.user.firstname} ${this.user.lastname}`;
-    },
-    userEmail() {
-      return this.user.email;
-    },
-    userPhone() {
-      return this.user.contact || 'Not Provided';
-    },
-    userRole() {
-      return this.user.usertype || 'User';
-    }, */
   },
   mounted() {
     // Retrieve user data from local storage
