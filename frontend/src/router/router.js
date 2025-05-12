@@ -7,6 +7,7 @@ import UserList from '../pages/UserList.vue';
 import EditUser from '../pages/EditUser.vue';
 import About from '../components/About.vue';
 import ForgotPassword from '../pages/ForgotPassword.vue';
+//import UserProfile from '../pages/UserProfile copy.vue';
 import UserProfile from '../pages/UserProfile.vue';
 
 import adminList from '../pages/adminList.vue';
